@@ -26,7 +26,7 @@
                                                     <div class="sch-item-row-5-info">
                                                         <div class="sch-item-row-5-name">
                                                             <a
-                                                                href="{{ route('single_product', $item['id']) }}">{{ $item['name'] }}</a>
+                                                                href="{{ route('single-product', $item['id']) }}">{{ $item['name'] }}</a>
                                                         </div>
                                                         <div class="sch-item-row-5-brand">
                                                             {{ Str::words($item['description'], 15, '....') }}
@@ -35,7 +35,7 @@
                                                             $ {{ $item['price'] }}
                                                         </div>
                                                         <div class="sch-button-5">
-                                                            <a href="{{ route('single_product', $item['id']) }}"
+                                                            <a href="{{ route('single-product', $item['id']) }}"
                                                                 class="button-cart" style="float: left;">
                                                                 <i class="ion-eye left-icon"></i>
                                                             </a>

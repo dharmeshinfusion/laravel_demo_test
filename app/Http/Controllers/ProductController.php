@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Exception;
 
-class HomeController extends Controller
+class ProductController extends Controller
 {
     /**
      *  * Create a new controller instance.
@@ -27,11 +27,20 @@ class HomeController extends Controller
 
 
     /* ----------------------------------------------------------------------------------
-    @Description: Function for List Of Product
+    @Description: Function for Single Product
     ---------------------------------------------------------------------------------- */
-    public function index()
+    public function single_product($id)
     {
-        $product = Product::get();
-        return view('home', compact('product'));
+        try {
+            $single_product = Product::where('id', $id)->first();
+            if (!empty($single_product)) {
+                return view('pages/product/single_product', compact('single_product'));
+            } else {
+                smilify('error', 'Single Page Not Found 🔥 !');
+                return redirect()->route('home');
+            }
+        } catch (Exception $e) {
+            return back()->with(['alert-type' => 'danger', 'message' => $e->getMessage()]);
+        }
     }
 }

@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +24,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/single_product/{id}', [App\Http\Controllers\HomeController::class, 'single_product'])->name('single_product');
-Route::get('/cart', [App\Http\Controllers\HomeController::class, 'checkout'])->name('cart');
-Route::post('/checkout', [App\Http\Controllers\HomeController::class, 'store'])->name('checkout.store');
-Route::post('/checkoutdelete/{id}', [App\Http\Controllers\HomeController::class, 'delete'])->name('checkoutdelete');
-Route::post('/order', [App\Http\Controllers\HomeController::class, 'storeorder'])->name('order');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/single-product/{id}', [ProductController::class, 'single_product'])->name('single-product');
+Route::get('/cart', [CartController::class, 'checkout'])->name('cart');
+Route::post('/checkout', [CartController::class, 'store'])->name('checkout.store');
+Route::post('/checkoutdelete/{id}', [CartController::class, 'delete'])->name('checkoutdelete');
+Route::post('/cartitem/{id}', [CartController::class, 'cartitem'])->name('cartitem');
+Route::post('/order', [OrderController::class, 'storeorder'])->name('order');
