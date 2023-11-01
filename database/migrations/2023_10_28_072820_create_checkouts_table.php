@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('quantity')->length(250)->nullable();
             $table->string('name')->length(250)->nullable();
             $table->decimal('price', 8, 2)->nullable();
-            $table->string('total_price', 8, 2)->nullable();
+            $table->decimal('total_price', 8, 2)->nullable();
             $table->string('image')->length(250)->nullable();
             $table->text('description')->length(250)->nullable();
             $table->timestamps();
